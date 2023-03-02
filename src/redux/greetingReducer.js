@@ -15,7 +15,6 @@ const greetingReducer = (state= initialState, action ) => {
             default: 
              return state;
     }
-
 }
 
 export default greetingReducer;
