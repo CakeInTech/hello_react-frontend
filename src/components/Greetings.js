@@ -1,6 +1,7 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchRandomGreeting } from "../api/fetchGreetings";
+import fetchRandomGreeting from '../api/fetchGreetings';
 
 const Greeting = ({ message, fetchRandomGreeting }) => {
   useEffect(() => {
@@ -14,9 +15,18 @@ const Greeting = ({ message, fetchRandomGreeting }) => {
   );
 };
 
-
-const mapStateToProps = state => ({
-  message: state.greeting.message
+const mapStateToProps = (state) => ({
+  message: state.greeting.message,
 });
+
+Greeting.propTypes = {
+  message: PropTypes.string,
+  fetchRandomGreeting: PropTypes.func,
+};
+
+Greeting.defaultProps = {
+  message: 'Hello there!',
+  fetchRandomGreeting: undefined,
+};
 
 export default connect(mapStateToProps, { fetchRandomGreeting })(Greeting);
